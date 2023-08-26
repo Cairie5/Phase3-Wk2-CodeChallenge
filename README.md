@@ -45,7 +45,23 @@ git clone the repository to your local machine using the command.
 $ git clone git@github.com:Cairie5/Phase3-Wk2-CodeChallenge.git
 ```
 
+Navigate to the project using the command cd
+```bash
+$ cd phase3-Wk2-CodeChallenge
+```
 
+Run the code using the command code . on your terminal
+```bash
+$ code .
+```
+
+Install the necessary dependencies required
+```bash
+$ pipenv install
+```
+```bash
+ $ pipenv shell
+```
 
 ## Technologies Used
 . Python
