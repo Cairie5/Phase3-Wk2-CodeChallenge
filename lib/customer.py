@@ -6,8 +6,8 @@ class Customer:
     
     # Initialize a customer instance with given_name and family_name
     def __init__(self, given_name, family_name):
-        self.given_name = str(given_name)  # Convert given_name to string
-        self.family_name = str(family_name)  # Convert family_name to string
+        self.given_name = given_name  # Convert given_name to string
+        self.family_name = family_name  # Convert family_name to string
         self.full_name = None  # Initialize full_name to None
         self.set_full_name()   # Call the set_full_name method to set the full_name
         Customer.all_customers.append(self)  # Add the instance to the list of all customers
@@ -15,14 +15,14 @@ class Customer:
     # Set the given_name attribute
     def set_given_name(self, given_name):
         if isinstance(given_name, str):
-            self.given_name = str(given_name)
+            self.given_name = given_name
         else:
             print("Given name must be a string")
         
     # Set the family_name attribute
     def set_family_name(self, family_name):
         if isinstance(family_name, str):
-            self.family_name = str(family_name)
+            self.family_name = family_name
         else:
             print("Family name must be a string")
         
