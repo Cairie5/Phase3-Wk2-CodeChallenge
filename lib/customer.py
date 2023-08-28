@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from review import Review
+
 # Define a Customer class
 class Customer:
     all_customers = []  # Class attribute to store all instances of Customer
