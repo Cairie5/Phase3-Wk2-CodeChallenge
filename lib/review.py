@@ -6,8 +6,8 @@ class Review:
 
     def __init__(self, customer, restaurant, rating=None):
         # Initialize instance attributes
-        self.customer = customer
-        self.restaurant = restaurant
+        self._customer = customer  # Private customer attribute
+        self._restaurant = restaurant  # Private restaurant attribute
         self._rating = None  # Initialize the private attribute _rating
         
         # Add the review instance to the all_reviews list
@@ -29,21 +29,21 @@ class Review:
     # Create a property named 'rating'
     rating = property(get_rating, set_rating)
 
-    def get_customer(self):
-        return self.customer  # Getter method to retrieve the customer attribute
+    def customer(self):
+        return self._customer  # Getter method to retrieve the private customer attribute
 
-    def get_restaurant(self):
-        return self.restaurant  # Getter method to retrieve the restaurant attribute
+    def restaurant(self):
+        return self._restaurant  # Getter method to retrieve the private restaurant attribute
 
     @property
     def restaurant_name(self):  # Property to retrieve the restaurant name
-        return self.restaurant
+        return self._restaurant
 
     @classmethod
     def all(cls):
         # Return a list of formatted strings containing customer, restaurant, and rating information
         return [
-            f"Customer: {review.get_customer()}, Restaurant: {review.restaurant_name}, Rating: {review.rating}"
+            f"Customer: {review.customer()}, Restaurant: {review.restaurant_name}, Rating: {review.rating}"
             for review in cls.all_reviews
         ]
 
@@ -56,4 +56,3 @@ print(myreview.rating)
 # Getting all the reviews
 all_reviews = Review.all()
 print(all_reviews)
-
