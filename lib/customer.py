@@ -48,54 +48,30 @@ class Customer:
         new_review = Review(self, restaurant, rating)
         self.reviews.append(new_review)
 
-# Adding the Review class from the previous code
-class Review:
-    all_reviews = []
-
-    def __init__(self, customer, restaurant, rating=None):
-        self._customer = customer
-        self._restaurant = restaurant
-        self._rating = None
-        Review.all_reviews.append(self)
-        if rating is not None:
-            self.set_rating(rating)
-
-    def get_rating(self):
-        return self._rating
-
-    def set_rating(self, rating):
-        if isinstance(rating, int):
-            self._rating = rating
-        else:
-            print("Rating must be an integer")
-
-    rating = property(get_rating, set_rating)
-
-    def customer(self):
-        return self._customer
-
-    def restaurant(self):
-        return self._restaurant
-
-    @property
-    def restaurant_name(self):
-        return self._restaurant
+    def num_reviews(self):
+        # Returns the total number of reviews that this customer has authored
+        return len(self.reviews)
 
     @classmethod
-    def all(cls):
-        return [
-            f"Customer: {review.customer()}, Restaurant: {review.restaurant_name}, Rating: {review.rating}"
-            for review in cls.all_reviews
-        ]
+    def find_by_name(cls, name):
+        # Given a string of a full name, returns the first customer whose full name matches
+        for customer in cls.all_customers:
+            if customer.full_name == name:
+                return customer
+        return None
+
+    @classmethod
+    def find_all_by_given_name(cls, name):
+        # Given a string of a given name, returns a list containing all customers with that given name
+        matching_customers = []
+        for customer in cls.all_customers:
+            if customer.given_name == name:
+                matching_customers.append(customer)
+        return matching_customers
 
 # Creating instances of the Customer class
 mycustomer = Customer("George", "Washington")
 newCustomer = Customer("Henry", "Kennedy")
-
-# Accessing all customers and printing full names
-all_customers = Customer.all()
-for customer in all_customers:
-    print(customer.full_name)
 
 # Adding reviews and accessing reviewed restaurants for a customer
 restaurant1 = "Dae Jang Geum"
@@ -104,8 +80,16 @@ restaurant2 = "Pizza Palace"
 mycustomer.add_review(restaurant1, 5)
 mycustomer.add_review(restaurant2, 4)
 
-print("Reviewed Restaurants:", mycustomer.restaurants())
+# Using the new methods
+print("Number of reviews by George Washington:", mycustomer.num_reviews())
 
-# Getting all the reviews
-all_reviews = Review.all()
-print(all_reviews)
+found_customer = Customer.find_by_name("George Washington")
+if found_customer:
+    print("Found customer:", found_customer.full_name)
+else:
+    print("Customer not found.")
+
+customers_with_given_name = Customer.find_all_by_given_name("Henry")
+print("Customers with given name 'Henry':")
+for customer in customers_with_given_name:
+    print(customer.full_name)
