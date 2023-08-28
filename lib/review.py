@@ -47,7 +47,6 @@ class Review:
             for review in cls.all_reviews
         ]
 
-
 # Creating an instance of the review class
 myreview = Review("Patience", "Dae Jang Geum", 10)
 
