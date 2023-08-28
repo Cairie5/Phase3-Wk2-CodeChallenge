@@ -47,12 +47,5 @@ class Review:
             for review in cls.all_reviews
         ]
 
-# Creating an instance of the review class
-myreview = Review("Patience", "Dae Jang Geum", 10)
-
-# Getting the rating of the review using the rating property
-print(myreview.rating)
-
-# Getting all the reviews
-all_reviews = Review.all()
-print(all_reviews)
+# Rest of the code (Restaurant and Customer classes) remains unchanged
+# ... (Paste your Restaurant and Customer class code here)
