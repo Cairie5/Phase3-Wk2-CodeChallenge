@@ -71,7 +71,7 @@ class Customer:
 
 # Creating instances of the Customer class
 mycustomer = Customer("George", "Washington")
-newCustomer = Customer("Henry", "Kennedy")
+newCustomer = Customer("Sammy", "Junior")
 
 # Adding reviews and accessing reviewed restaurants for a customer
 restaurant1 = "Dae Jang Geum"
@@ -89,7 +89,7 @@ if found_customer:
 else:
     print("Customer not found.")
 
-customers_with_given_name = Customer.find_all_by_given_name("Henry")
-print("Customers with given name 'Henry':")
+customers_with_given_name = Customer.find_all_by_given_name("Sammy")
+print("Customers with given name 'Sammy':")
 for customer in customers_with_given_name:
     print(customer.full_name)
