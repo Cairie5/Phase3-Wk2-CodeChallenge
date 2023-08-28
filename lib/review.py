@@ -56,3 +56,4 @@ print(myreview.rating)
 # Getting all the reviews
 all_reviews = Review.all()
 print(all_reviews)
+
