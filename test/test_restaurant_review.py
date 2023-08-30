@@ -1,5 +1,3 @@
-# test_restaurant_review.py
-
 import os
 import sys
 import pytest
@@ -13,7 +11,7 @@ from lib.review import Review
 
 def test_restaurant_name():
     restaurant = Restaurant("Dae Jang Geum")
-    assert restaurant._name == "Dae Jang Geum"
+    assert restaurant.get_name() == "Dae Jang Geum"
 
 def test_customer_given_name():
     customer = Customer("George", "Washington")
@@ -41,7 +39,7 @@ def test_customer_restaurants():
     customer.add_review(restaurant1, 4)
     customer.add_review(restaurant2, 5)
 
-    reviewed_restaurants = customer.restaurants()
+    reviewed_restaurants = customer.customer_reviews()
     assert len(reviewed_restaurants) == 2
     assert restaurant1 == reviewed_restaurants[0]
     assert restaurant2 == reviewed_restaurants[1]

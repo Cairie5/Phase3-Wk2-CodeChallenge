@@ -38,6 +38,9 @@ class Review:
     @property
     def restaurant_name(self):  # Property to retrieve the restaurant name
         return self._restaurant
+    
+    def review_rating(self):
+        return self._rating
 
     @classmethod
     def all(cls):

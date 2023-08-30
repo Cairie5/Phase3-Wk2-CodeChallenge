@@ -16,9 +16,9 @@ class Restaurant:
     def get_name(self):
         return self._name  # Return the name attribute
 
-    def reviews(self):
-        return [review for review in self.reviews]  # Return a list of reviews
-
+    def get_reviews(self):
+        return [review for review in self._reviews]
+    
     def customers(self):
         reviewed_customers = set()
         for review in self.reviews:

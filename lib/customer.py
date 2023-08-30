@@ -38,7 +38,7 @@ class Customer:
     def all(cls):
         return cls.all_customers
 
-    def restaurants(self):
+    def customer_reviews(self):
         # Returns a unique list of all restaurants this customer has reviewed
         reviewed_restaurants = set()
         for review in self.reviews:
@@ -47,8 +47,9 @@ class Customer:
 
     def add_review(self, restaurant, rating):
         # Creates a new review and associates it with this customer and restaurant
-        new_review = Review(self, restaurant, rating)
+        new_review = Review(self, restaurant, rating)  # Pass the Restaurant instance
         self.reviews.append(new_review)
+
 
     def num_reviews(self):
         # Returns the total number of reviews that this customer has authored
