@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from review import Review
+from lib.review import Review
 
 # Define a Customer class
 class Customer:
