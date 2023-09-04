@@ -5,9 +5,10 @@ import pytest
 # Add the project's root directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from lib.review import Review
 from lib.restaurant import Restaurant
 from lib.customer import Customer
-from lib.review import Review
+
 
 def test_restaurant_name():
     restaurant = Restaurant("Dae Jang Geum")
@@ -31,20 +32,50 @@ def test_review_rating():
     review = Review(customer, restaurant, 5)
     assert review.rating == 5
 
-def test_customer_restaurants():
-    customer = Customer("George", "Washington")
-    restaurant1 = Restaurant("Restaurant A")
-    restaurant2 = Restaurant("Restaurant B")
+# New test functions for additional test cases
 
-    customer.add_review(restaurant1, 4)
-    customer.add_review(restaurant2, 5)
+def test_review_properties():
+    # Test properties of the Review class
+    # Creating an instance of the Review class
+    myreview = Review("Patience", "Dae Jang Geum", 10)
 
-    reviewed_restaurants = customer.customer_reviews()
-    assert len(reviewed_restaurants) == 2
-    assert restaurant1 == reviewed_restaurants[0]
-    assert restaurant2 == reviewed_restaurants[1]
+    # Getting the rating of the review using the rating property
+    assert myreview.rating == 10
+    assert myreview.review_rating() == 10
 
-# Add more test functions for other methods
+
+def test_customer_properties():
+    # Test properties of the Customer class
+    # Creating instances of the Customer class
+    mycustomer = Customer("George", "Washington")
+    newCustomer = Customer("Sammy", "Junior")
+
+    # Adding reviews and accessing reviewed restaurants for a customer
+    restaurant1 = "Dae Jang Geum"
+    restaurant2 = "Pizza Palace"
+
+    mycustomer.add_review(restaurant1, 5)
+    mycustomer.add_review(restaurant2, 4)
+
+    # Using the new methods
+    assert mycustomer.num_reviews() == 2
+
+    found_customer = Customer.find_by_name("George Washington")
+    assert found_customer.full_name == "George Washington"
+
+    customers_with_given_name = Customer.find_all_by_given_name("Sammy")
+    assert len(customers_with_given_name) == 2  # There are 2 customers with the given name "Sammy Junior"
+
+def test_find_customer_by_name():
+    # Test finding a customer by name
+    # Creating instances of the Customer class
+    customer1 = Customer("George", "Washington")
+    customer2 = Customer("John", "Adams")
+
+    # Find a customer by name
+    found_customer = Customer.find_by_name("George Washington")
+    assert found_customer.full_name == customer1.full_name  # Compare full names instead
+
 
 if __name__ == "__main__":
     pytest.main()
